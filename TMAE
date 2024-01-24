@@ -44,7 +44,7 @@ from datetime import date, timedelta,datetime
 # time.sleep(1)
 # pyautogui.press("Tab", interval = 0.25)
 # time.sleep(1)
-# clipboard.copy("8025Is@14") 
+# clipboard.copy("8025") 
 # time.sleep(1)
 # pyautogui.hotkey("Ctrl","v",interval=0.25)
 # time.sleep(1)
