@@ -1,0 +1,535 @@
+from calendar import monthrange
+import pyautogui 
+import clipboard
+import time
+import keyboard
+from datetime import date, timedelta,datetime
+
+# #Velocidade 
+# t = 1.2
+# time.sleep(t)
+
+
+# #Acesso na conexão de área de trabalho remota       
+# pyautogui.hotkey("Super", "r",interval=0.25)
+# time.sleep(1)
+# clipboard.copy("%windir%\system32\mstsc.exe") 
+# time.sleep(1)
+# pyautogui.hotkey("Ctrl", "v",interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(5)
+# clipboard.copy("brneo928") 
+# time.sleep(1)
+# pyautogui.hotkey("Ctrl", "v",interval=0.25)
+# time.sleep(3)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(90)
+
+# #Abrindo o GSE oper
+# time.sleep(10)
+# pyautogui.hotkey("Super", "r",interval=0.25)
+# time.sleep(1)
+# clipboard.copy("C:\GSE\OPER\Oper.exe")  
+# time.sleep(1)
+# pyautogui.hotkey("Ctrl", "v",interval=0.25)
+# time.sleep(2)
+# pyautogui.press("Enter",interval=0.25)
+# time.sleep(10)
+
+# #Login no GSE 
+# clipboard.copy("B359832") 
+# time.sleep(1)
+# pyautogui.hotkey("Ctrl","v",interval=0.25)
+# time.sleep(1)
+# pyautogui.press("Tab", interval = 0.25)
+# time.sleep(1)
+# clipboard.copy("8025Is@14") 
+# time.sleep(1)
+# pyautogui.hotkey("Ctrl","v",interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(10)
+
+time.sleep(5)
+#Data do dia atual
+dataAtual = date.today() - timedelta(days=1)
+#data de ontem utilizada para renomear o arquivo
+dataOntem = dataAtual.strftime('%Y%m%d')
+
+#Endereço pasta dos relatórios
+pasta = '\\\sigo\eos\EOQS\Dados Extracao GSE'
+#pasta = 'Libraries\Documents'
+
+#Data inicial
+diainicial = "01"
+mêsinicial = str(dataAtual.month)
+anoinicial = str(dataAtual.year)
+
+#Data final
+diafinal = str(dataAtual.day)
+mêsfinal = str(dataAtual.month)
+anofinal = str(dataAtual.year)
+
+#Máquina Virtual (gse-Oper)
+time.sleep(5)
+pyautogui.press("Numlock")
+time.sleep(1)
+
+# #Abrindo o módulo> Relatórios > Atendimento > Tempo Médio de Atendimento
+# pyautogui.press("Alt", interval=0.25)
+# time.sleep(1) 
+# pyautogui.hotkey("Super", "up" , interval=0.25)
+# time.sleep(4)
+# pyautogui.press("Tab", interval = 0.25)
+# time.sleep(1) 
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# x=0
+# while x<4:
+#     pyautogui.press("down", interval=0.25)
+#     time.sleep(1) 
+#     x = x + 1
+
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("down", interval=0.25)
+# time.sleep(1) 
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("down" , interval=0.25)
+# time.sleep(1) 
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(2)
+
+#Escrevendo as datas:
+    #Data Inicial
+pyautogui.press("right", interval=0.25)
+time.sleep(1)
+pyautogui.write(mêsinicial, interval=0.25)
+time.sleep(1)
+pyautogui.press("right", interval=0.25)
+time.sleep(1)
+pyautogui.write(anoinicial, interval=0.25)
+time.sleep(1)
+pyautogui.press("left", interval=0.25)
+time.sleep(1)
+pyautogui.press("left", interval=0.25)
+time.sleep(1)
+pyautogui.write(diainicial, interval=0.25)
+time.sleep(1) 
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1) 
+
+
+    #Data Final
+pyautogui.press("right", interval=0.25)
+time.sleep(1)
+pyautogui.write(mêsfinal, interval=0.25)
+time.sleep(1)
+pyautogui.press("right", interval=0.25)
+time.sleep(1)
+pyautogui.write(anofinal, interval=0.25)
+time.sleep(1)
+pyautogui.press("left", interval=0.25)
+time.sleep(1)
+pyautogui.press("left", interval=0.25)
+time.sleep(1)
+pyautogui.write(diafinal, interval=0.25)
+time.sleep(1)
+
+#Gerando os relatórios DIÁIO:
+    #Conjunto.SE
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1)
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1)  
+pyautogui.press("end", interval=0.25)
+time.sleep(1) 
+pyautogui.press("enter", interval=0.25)
+time.sleep(25)
+pyautogui.click(645,270)
+time.sleep(2) 
+
+#Clic botão exportar
+pyautogui.click(750,312)
+time.sleep(4) 
+
+#Salvando o relatório
+    #Setup pasta
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1) 
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1)
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1)
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1)
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(2)
+
+pyautogui.press("enter", interval=0.25)
+time.sleep(2)
+clipboard.copy(pasta) 
+time.sleep(1)
+pyautogui.hotkey("Ctrl","v",interval=0.25)
+time.sleep(1)
+# pyautogui.write(pasta, interval=0.25)
+# time.sleep(1)
+pyautogui.press("enter", interval=0.25)
+time.sleep(3)
+
+#Renomenado arquivo
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1) 
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1)
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1)
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1)
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(1)
+pyautogui.press("Tab", interval = 0.25)
+time.sleep(2)
+# x=0
+# while x<6:
+#     pyautogui.press("Tab", interval = 0.25)
+#     time.sleep(1) 
+#     x = x + 1  
+
+#20230612.TMA.Conjunto.SE.Previa
+time.sleep(1)
+pyautogui.write(dataOntem, interval=0.25)
+time.sleep(2)
+clipboard.copy(".TMA.Conjunto.SE.Previa.txt") 
+time.sleep(1)
+pyautogui.hotkey("Ctrl","v",interval=0.25)
+time.sleep(1)
+
+#Salvar arquivo
+pyautogui.press("enter", interval=0.25)
+time.sleep(2)
+
+#Arquivo Gerado
+pyautogui.press("enter", interval=0.25)
+time.sleep(2)
+
+#Gerando os relatórios:
+#Conjunto
+pyautogui.click(600,280,interval= 0.25)
+time.sleep(1)  
+pyautogui.press("home", interval=0.25)
+time.sleep(1) 
+pyautogui.press("enter", interval=0.25)
+time.sleep(20)
+
+pyautogui.click(645,270,interval= 0.25)
+time.sleep(4) 
+
+#Clic botão exportar
+pyautogui.click(650,312,interval= 0.25)
+time.sleep(4) 
+
+#20230612.TMA.Conjunto.Previa
+pyautogui.write(dataOntem, interval=0.25)
+time.sleep(2)
+clipboard.copy(".TMA.Conjunto.Previa.txt") 
+time.sleep(2)
+pyautogui.hotkey("Ctrl","v",interval=0.25)
+time.sleep(2)
+
+#Salvar arquivo
+pyautogui.press("enter", interval=0.25)
+time.sleep(2)
+
+#Arquivo Gerado
+pyautogui.press("enter", interval=0.25)
+time.sleep(2)
+
+#Gerando os relatórios:
+#Regional
+pyautogui.click(600,280,interval= 0.25)
+time.sleep(2) 
+pyautogui.press("down", interval=0.25)
+time.sleep(2) 
+pyautogui.press("enter", interval=0.25)
+time.sleep(20)
+
+pyautogui.click(645,270,interval= 0.25)
+time.sleep(2) 
+
+#Clic botão exportar
+pyautogui.click(650,312,interval= 0.25)
+time.sleep(5) 
+
+#20230612.TMA.Regional.Previa
+pyautogui.write(dataOntem, interval=0.25)
+clipboard.copy(".TMA.Regional.Previa.txt") 
+time.sleep(1)
+pyautogui.hotkey("Ctrl","v",interval=0.25)
+time.sleep(1)
+
+#Salvar arquivo
+#pyautogui.click(1330,800)
+pyautogui.press("enter", interval=0.25)
+time.sleep(1)
+
+#Arquivo Gerado
+pyautogui.press("enter", interval=0.25)
+time.sleep(1)
+
+#Gerando os relatórios:
+#Alimentador
+pyautogui.click(600,280,interval= 0.25) 
+time.sleep(2) 
+
+x=0
+while x<7:
+    pyautogui.press("down", interval=0.25)
+    time.sleep(1) 
+    x = x + 1
+
+pyautogui.press("enter", interval=0.25)
+time.sleep(20)
+
+pyautogui.click(645,270,interval= 0.25)
+time.sleep(2) 
+
+#Clic botão exportar
+pyautogui.click(650,312,interval= 0.25)
+time.sleep(5)
+
+#20230612.TMA.Alimentador.Previa
+pyautogui.write(dataOntem, interval=0.25)
+clipboard.copy(".TMA.Alimentador.Previa.txt") 
+time.sleep(1)
+pyautogui.hotkey("Ctrl","v",interval=0.25)
+time.sleep(1)
+
+#Salvar arquivo
+pyautogui.press("enter", interval=0.25)
+time.sleep(1)
+
+#Arquivo Gerado
+pyautogui.press("enter", interval=0.25)
+time.sleep(3)
+
+
+#RELATORIOS MENSAL
+x=0
+while x<5:
+    pyautogui.press("Tab", interval = 0.25)
+    time.sleep(1) 
+    x = x + 1 
+
+# #Data do mês anterior
+# dataAtual = date.today() - timedelta(days=31)
+# # seta o dia para 1, e soma a quantidade de dias do mês menos 1
+# last_date = dataAtual.replace(day=1) + timedelta(monthrange(dataAtual.year, dataAtual.month)[1] - 1)
+
+# #data de ontem utilizada para renomear o arquivo
+# dataOntem = last_date.strftime('%Y%m%d')
+
+# #Data inicial
+# diainicial = "01"
+# mêsinicial = str(dataAtual.month)
+# anoinicial = str(dataAtual.year)
+# # print( diainicial+mêsinicial+anoinicial)
+
+# #Data final
+# diafinal = str(last_date.day)
+# mêsfinal = str(dataAtual.month)
+# anofinal = str(dataAtual.year)
+
+
+# #Escrevendo as datas:
+#     #Data Inicial
+# pyautogui.press("right", interval=0.25)
+# time.sleep(1)
+# pyautogui.write(mêsinicial, interval=0.25)
+# time.sleep(1)
+# pyautogui.press("right", interval=0.25)
+# time.sleep(1)
+# pyautogui.write(anoinicial, interval=0.25)
+# time.sleep(1)
+# pyautogui.press("left", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("left", interval=0.25)
+# time.sleep(1)
+# pyautogui.write(diainicial, interval=0.25)
+# pyautogui.press("Tab", interval = 0.25)
+# time.sleep(1) 
+
+#     #Data Final
+# pyautogui.press("right", interval=0.25)
+# time.sleep(1)
+# pyautogui.write(mêsfinal, interval=0.25)
+# time.sleep(1)
+# pyautogui.press("right", interval=0.25)
+# time.sleep(1)
+# pyautogui.write(anofinal, interval=0.25)
+# time.sleep(1)
+# pyautogui.press("left", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("left", interval=0.25)
+# time.sleep(1)
+# pyautogui.write(diafinal, interval=0.25)
+# time.sleep(1)
+
+# #Gerando os relatórios:
+# #Conjunto.SE
+# pyautogui.press("Tab", interval = 0.25)
+# time.sleep(1)
+# pyautogui.press("Tab", interval = 0.25)
+# time.sleep(1)  
+# pyautogui.press("end", interval=0.25)
+# time.sleep(1) 
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(25)
+
+# pyautogui.click(645,270)
+# time.sleep(1) 
+
+# #Clic botão exportar
+# pyautogui.click(750,312)
+# time.sleep(5) 
+
+# #20230612.TMA.Conjunto.SE.Previa
+# pyautogui.write(dataOntem, interval=0.25)
+# time.sleep(1)
+# clipboard.copy(".TMA.Conjunto.SE.Previa.txt") 
+# time.sleep(1)
+# pyautogui.hotkey("Ctrl","v",interval=0.25)
+# time.sleep(1)
+
+# #Salvar arquivo
+#     #Substituir arquivo
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("left", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+
+
+# #Gerando os relatórios:
+#     #Conjunto
+# pyautogui.click(600,280)
+# time.sleep(1)  
+# pyautogui.press("home", interval=0.25)
+# time.sleep(1) 
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(20)
+
+# pyautogui.click(645,270)
+# time.sleep(5) 
+
+# #Clic botão exportar
+# pyautogui.click(650,312)
+# time.sleep(5) 
+
+# #20230612.TMA.Conjunto.Previa
+# pyautogui.write(dataOntem, interval=0.25)
+# time.sleep(1)
+# clipboard.copy(".TMA.Conjunto.Previa.txt") 
+# time.sleep(1)
+# pyautogui.hotkey("Ctrl","v",interval=0.25)
+# time.sleep(1)
+
+# #Substituir arquivo
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("left", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+
+# #Gerando os relatórios:
+#     #Regional
+# pyautogui.click(600,280) 
+# time.sleep(1) 
+# pyautogui.press("down", interval=0.25)
+# time.sleep(1) 
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(20)
+
+# pyautogui.click(645,270)
+# time.sleep(5) 
+
+# #Clic botão exportar
+# pyautogui.click(650,312)
+# time.sleep(5) 
+
+# #20230612.TMA.Regional.Previa
+# pyautogui.write(dataOntem, interval=0.25)
+# clipboard.copy(".TMA.Regional.Previa.txt") 
+# time.sleep(1)
+# pyautogui.hotkey("Ctrl","v",interval=0.25)
+# time.sleep(1)
+
+# #Salvar arquivo
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+
+# #Substituir arquivo
+# pyautogui.press("left", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+
+# #Gerando os relatórios:
+#     #Alimentador
+# pyautogui.click(600,280) 
+# time.sleep(1) 
+
+# a=0   
+# while a<7:
+#     pyautogui.press("down", interval=0.25)
+#     time.sleep(1) 
+#     a = a + 1
+        
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(20)
+
+# pyautogui.click(645,270)
+# time.sleep(5) 
+
+# #Clic botão exportar
+# pyautogui.click(650,312)
+# time.sleep(5) 
+
+# #20230612.TMA.Alimentador.Previa.txt
+# pyautogui.write(dataOntem, interval=0.25)
+# clipboard.copy(".TMA.Alimentador.Previa.txt") 
+# time.sleep(1)
+# pyautogui.hotkey("Ctrl","v",interval=0.25)
+# time.sleep(1)
+
+# #Substituir arquivo
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("left", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(1)
+# pyautogui.press("enter", interval=0.25)
+# time.sleep(5)
+
+#Ativando o Numlock 
+pyautogui.press("Numlock",interval=0.25)
+time.sleep(1)
+
+#Fechando o GSE e maq virtual
+x=0
+while x<3:
+    pyautogui.hotkey("alt","f4",interval=0.25)
+    time.sleep(2)
+    x= x+1
+
